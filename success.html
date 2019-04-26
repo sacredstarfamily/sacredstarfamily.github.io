@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>sacredstarfamily</title>
+    <script src="https://cdn.jsdelivr.net/npm/steemconnect@latest"></script>
 </head>
 <body>
     <center><h1>sacredstarfamily</h1></center>
+    <script>
+    var sc = require('steemconnect');
+
+    var api = sc.Initialize({
+        app: 'sacredstarfamily',
+        callbackURL: 'https://sacredstarfamily.github.io/success.html',
+        accessToken: 'access_token',
+        scope: ['vote', 'comment']
+    });
+    var link = api.getLoginURL(state);
+    console.log(link)
+    // => https://
+    api.me(function (err, res) {
+        console.log(err, res)       
+    });
+    
+    </script>
 </body>
 </html>
