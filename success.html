@@ -11,11 +11,40 @@
 </head>
 <body>
     <center><h1>sacredstarfamily</h1></center>
-    <div v-if="username">
-        <p class="mb-4">
-            You are logged as <b>{{username}}</b>
-            <a href="#" @click="logout">logout</a>
-        </p>    
+<div id="main" class="Box p-4 my-4" v-cloak>
+    <div class="bg-gray text-center mb-4 p-4 rounded">
+        <h3>sacredstarfamily</h3>
+        <p>
+            <a target="_blank" href="https://steemit.com/@sacredstarfamily">
+                @sacredstarfamily
+            </a>
+        </p>
+    </div>
+    <p v-if="!isInit">Loading...</p>
+    <div v-else>
+        <button v-if="!username" @click="login" class="btn btn-large btn-primary">
+            Log in
+        </button>
+        <div v-if="username">
+            <p class="mb-4">
+                You are logged as <b>{{username}}</b>
+                <a href="#" @click="logout">logout</a>
+            </p>
+            <p class="mb-2">
+                Comment on the post
+
+            </p>
+
+
+
+
+            <div v-if="error" class="flash flash-error mb-2">
+                <p>{{ error.error_description || error.error }}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
     <script type="text/javascript">
         const sc = new steemconnect.Client({
             app: 'sacredstarfamily',
