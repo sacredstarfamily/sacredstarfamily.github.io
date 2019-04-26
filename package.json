@@ -1,0 +1,27 @@
+{
+  "name": "sacredstarfamily.github.io",
+  "version": "1.0.0",
+  "description": "unity playground project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sacredstarfamily/sacredstarfamily.github.io.git"
+  },
+  "keywords": [
+    "unity",
+    "abundance",
+    "grow"
+  ],
+  "author": "caleb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sacredstarfamily/sacredstarfamily.github.io/issues"
+  },
+  "homepage": "https://github.com/sacredstarfamily/sacredstarfamily.github.io#readme",
+  "dependencies": {
+    "steemconnect": "^2.0.1"
+  }
+}
