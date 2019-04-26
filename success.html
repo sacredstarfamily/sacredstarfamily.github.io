@@ -5,25 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>sacredstarfamily</title>
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/steemconnect@3.0.0-beta.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/steemconnect@latest"></script>
 </head>
 <body>
     <center><h1>sacredstarfamily</h1></center>
-    <script>
-    var sc = require('steemconnect');
-
-    var api = sc.Initialize({
-        app: 'sacredstarfamily',
-        callbackURL: 'https://sacredstarfamily.github.io/success.html',
-        accessToken: 'access_token',
-        scope: ['vote', 'comment']
-    });
-    var link = api.getLoginURL(state);
-    console.log(link)
-    // => https://
-    api.me(function (err, res) {
-        console.log(err, res)       
-    });
+    <div v-if="username">
+        <p class="mb-4">
+            You are logged as <b>{{username}}</b>
+            <a href="#" @click="logout">logout</a>
+        </p>    
+    <script type="text/javascript">
+        const sc = new steemconnect.Client({
+            app: 'sacredstarfamily',
+            callbackURL: 'https://sacredstarfamily.github.io/success.html'
+        });
+        window.onload = function () {
+            new Vue({
+                el: '#main',
+                data: {
+                    username: null,
+                    input: null,
+                    isInit: false,
+                    isLoading: false,
+                    txId: null,
+                    error: null,
+                },
+                mounted: function () {
+                    let params = (new URL(location)).searchParams;
+                    const token = params.get('access_token') || localStorage.getItem('sc_token');
+                    if (token) {
+                        const self = this;
+                        this.isInit = false;
+                        sc.setAccessToken(token);
+                        sc.me(function (err, result) {
+                            if (result) self.username = result.name;
+                            if (err) self.error = err;
+                            localStorage.setItem('sc_token', token);
+                            self.isInit = true;
+                            console.log(err, result);
+                        });
+                    } else {
+                        this.isInit = true;
+                    }
+                },
+                methods: {
+                    login: function () {
+                        const self = this;
+                        this.isLoading = true;
+                        sc.login({}, function (err, token) {
+                            if (err) return self.isLoading = false;
+                            sc.setAccessToken(token);
+                            sc.me(function (err, result) {
+                                if (result) self.username = result.name;
+                                if (err) self.error = err;
+                                localStorage.setItem('sc_token', token);
+                                self.isLoading = false;
+                                console.log(err, result);
+                            });
+                        });
+                    },
+                    comment: function () {
+                        const self = this;
+                        this.isLoading = true;
+                        const permlink = 'steemconnect-' + new Date().getTime();
+                        sc.comment('siol', 'test', this.username, permlink, '', this.input, '', function (err, result) {
+                            self.isLoading = false;
+                            if (result) self.txId = result.result.id;
+                            if (err) self.error = err;
+                            console.log(err, result);
+                        });
+                    },
+                    logout: function () {
+                        this.username = null;
+                        localStorage.removeItem('sc_token');
+                    }
+                }
+            });
+        };
+    </script>
     
     </script>
 </body>

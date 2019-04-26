@@ -16,8 +16,8 @@
     <div class="bg-gray text-center mb-4 p-4 rounded">
       <h3>sacredstarfamily</h3>
       <p>
-        <a target="_blank" href="https://github.com/steemscript/steemconnect.js/blob/master/docs/index.html">
-          See the code on GitHub
+        <a target="_blank" href="https://steemit.com/@sacredstarfamily">
+          @sacredstarfamily
         </a>
       </p>
     </div>
@@ -33,26 +33,16 @@
         </p>
         <p class="mb-2">
           Comment on the post
-          <a href="https://steemit.com/@siol/test" target="_blank">
-            @siol/test
-          </a>
+          
         </p>
-        <textarea v-model="input" placeholder="Write a comment" class="form-control mb-2 btn-block text-left"
-          :disabled="isLoading"></textarea>
-        <div v-if="txId" class="flash flash-success mb-2">
-          <p>
-            The transaction has been broadcasted, here is the tx id:
-            <a :href="'https://steemd.com/tx/' + txId" target="_blank">
-              <b>{{ txId }}</b>
-            </a>
-          </p>
-        </div>
+        
+       
+          
+        
         <div v-if="error" class="flash flash-error mb-2">
           <p>{{ error.error_description || error.error }}</p>
         </div>
-        <button @click="comment" class="btn btn-primary mb-2" :disabled="isLoading">
-          Submit
-        </button>
+      
       </div>
     </div>
   </div>

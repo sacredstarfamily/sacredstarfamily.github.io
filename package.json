@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/sacredstarfamily/sacredstarfamily.github.io#readme",
   "dependencies": {
+    "sc2-sdk": "^2.0.1",
     "steem": "^0.7.4",
     "steemconnect": "^2.0.1"
   }
