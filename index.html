@@ -1,139 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" ng-app="app">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sacredstarfamily</title>
-  <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
-  <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/steemconnect@3.0.0-beta.1"></script>
-  <!-- <script src="../dist/steemconnect.min.js"></script> -->
+  <base href="/" />
+  <meta charset="UTF-8">
+  <meta id="viewport" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_ykgtxz90gjve7b9.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sc2-sdk@latest"></script>
+  <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+  <script src="https://sacredstarfamily.github.io/app.js"></script>
+  <style>
+    hr { margin: 40px 0; }
+    h3 { margin-bottom: 20px; }
+  </style>
 </head>
 
 <body>
-<h1><center>sacredstarfamily<br> living-unity playgrounds</center></h1>
 
-
-  <div id="main" class="Box p-4 my-4" v-cloak>
-    <div class="bg-gray text-center mb-4 p-4 rounded">
-      <h3>sacredstarfamily</h3>
-      <p>
-        <a target="_blank" href="https://steemit.com/@sacredstarfamily">
-          @sacredstarfamily
-        </a>
-      </p>
-    </div>
-    <p v-if="!isInit">Loading...</p>
-    <div v-else>
-    <p>if you are on steemit then sign up to sacredstarfamily <br> if not then create an account <a href="https://steemit.com">here</a></p>
-      <button v-if="!username" @click="login" class="btn btn-large btn-primary">
-        Log in
-      </button>
-      <div v-if="username">
-        <p class="mb-4">
-          You are logged as <b>{{username}}</b>
-          <a href="#" @click="logout">logout</a>
-        </p>
-        <p class="mb-2">
-          Comment on the post
-          
-        </p>
-        
-       
-          
-        
-        <div v-if="error" class="flash flash-error mb-2">
-          <p>{{ error.error_description || error.error }}</p>
-        </div>
-      
-      </div>
-    </div>
+<div class="container py-5" style="max-width: 600px;" ng-controller="Main as main">
+  <div class="mb-4">
+    <h1>sacredstarfamily</h1>
+    <p>This is a demo using <a href="https://github.com/steemit/sc2-sdk">SteemConnect 2 SDK</a>. You can login, logout, comment and upvote.</p>
+    <p>Find the code of this demo on GitHub: <a href="https://github.com/steemscript/example-steemconnect-angular">https://github.com/steemit/example-steemconnect-angular</a></p>
   </div>
 
-  <script type="text/javascript">
-    const sc = new steemconnect.Client({
-      app: 'sacredstarfamily',
-      callbackURL: 'https://sacredstarfamily.github.io/success.html',
-      scope: ['vote', 'comment']
-    });
-    window.onload = function () {
-      new Vue({
-        el: '#main',
-        data: {
-          username: null,
-          input: null,
-          isInit: false,
-          isLoading: false,
-          txId: null,
-          error: null,
-        },
-        mounted: function () {
-          let params = (new URL(location)).searchParams;
-          const token = params.get('access_token') || localStorage.getItem('sc_token');
-          if (token) {
-            const self = this;
-            this.isInit = false;
-            sc.setAccessToken(token);
-            sc.me(function (err, result) {
-              if (result) self.username = result.name;
-              if (err) self.error = err;
-              localStorage.setItem('sc_token', token);
-              self.isInit = true;
-              console.log(err, result);
-            });
-          } else {
-            this.isInit = true;
-          }
-        },
-        methods: {
-          login: function () {
-            const self = this;
-            this.isLoading = true;
-            sc.login({}, function (err, token) {
-              if (err) return self.isLoading = false;
-              sc.setAccessToken(token);
-              sc.me(function (err, result) {
-                if (result) self.username = result.name;
-                if (err) self.error = err;
-                localStorage.setItem('sc_token', token);
-                self.isLoading = false;
-                console.log(err, result);
-              });
-            });
-          },
-          comment: function () {
-            const self = this;
-            this.isLoading = true;
-            const permlink = 'steemconnect-' + new Date().getTime();
-            sc.comment('siol', 'test', this.username, permlink, '', this.input, '', function (err, result) {
-              self.isLoading = false;
-              if (result) self.txId = result.result.id;
-              if (err) self.error = err;
-              console.log(err, result);
-            });
-          },
-          logout: function () {
-            this.username = null;
-            localStorage.removeItem('sc_token');
-          }
-        }
-      });
-    };
-  </script>
+  <hr />
+  <div>
+    <h3>Login & logout</h3>
+    <b ng-show="isAuth()"><img src="https://steemitimages.com/u/{{user.name}}/avatar" width="32" height="32"> @{{user.name}}</b>
+    <button ng-show="isAuth()" class="ml-2 btn btn-secondary" type="submit" ng-click="logout()">
+      Logout
+    </button>
+    <a class="btn btn-primary" ng-href="{{loginURL}}" ng-hide="isAuth()">Log In</a>
+  </div>
 
-  <style type="text/css">
-    #main {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+  <hr />
+  <h3>Comment & vote</h3>
+  <div class="input-group input-group-lg">
+    Last comments on the post: @{{parentAuthor}}/{{parentPermlink}}
+  </div>
 
-    [v-cloak] {
-      display: none;
-    }
-  </style>
+  <ul class="list-group my-4" ng-init="loadComments()">
+    <li class="list-group-item" ng-repeat="comment in comments">
+      @{{comment.author}}: {{comment.body}}
+      <button ng-show="isAuth()" class="ml-2 btn btn-secondary btn-sm" type="submit" ng-click="vote(comment.author, comment.permlink, 1000)">
+        <i class="icon iconfont icon-praise"></i> {{comment.net_votes}}
+      </button>
+    </li>
+  </ul>
+
+  <form ng-show="isAuth()" ng-submit="comment()">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-disabled="loading" placeholder="Write a comment here" ng-model="message">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </span>
+    </div>
+  </form>
+
+  <hr />
+  <h3>User metadata</h3>
+  <p>SteemConnect allows you to store data related to each user (such as user preferences) that do not impact a user's core functionality.</p>
+  <form ng-show="isAuth()" ng-submit="updateUserMetadata({ locale: locale })">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="What is your locale?" ng-model="locale">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Save</button>
+      </span>
+    </div>
+    <pre class="mt-4">{{metadata}}</pre>
+  </form>
+
+</div>
 
 </body>
-
 </html>
