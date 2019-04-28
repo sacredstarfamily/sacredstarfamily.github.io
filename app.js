@@ -60,7 +60,7 @@ angular.module('app', [])
           console.log('You successfully voted for @' + author + '/' + permlink, err, result);
           $scope.loadComments();
         } else {
-          console.log(err);
+          alert(err);
         }
       });
     };
