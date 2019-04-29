@@ -1,6 +1,6 @@
 var api = sc2.Initialize({
   app: 'sacredstarfamily',
-  callbackURL: 'https://sacredstarfamily.github.io/success.html',
+  callbackURL: 'https://sacredstarfamily.com/success.html',
   scope: ['vote', 'comment']
 });
 
