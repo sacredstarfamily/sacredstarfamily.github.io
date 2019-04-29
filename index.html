@@ -2,25 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SteemConnect demo with Vue.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sacredstarfamily</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/steemconnect@3.0.0-beta.1"></script>
   <!-- <script src="../dist/steemconnect.min.js"></script> -->
 </head>
 <body>
-
+<h1><center>sacredstarfamily<br>living unity playgrounds</center></h1>
 <div id="main" class="Box p-4 my-4" v-cloak>
   <div class="bg-gray text-center mb-4 p-4 rounded">
-    <h3>SteemConnect demo with Vue.js</h3>
-    <p>
-      <a
-        target="_blank"
-        href="https://github.com/steemscript/steemconnect.js/blob/master/docs/index.html"
-      >
-        See the code on GitHub
-      </a>
-    </p>
+    <h3>sacredstarfamily</h3>
+    
   </div>
   <p v-if="!isInit">Loading...</p>
   <div v-else>
@@ -38,8 +32,8 @@
       </p>
       <p class="mb-2">
         Comment on the post
-        <a href="https://steemit.com/@siol/test" target="_blank">
-          @siol/test
+        <a href="https://steemit.com/@sacredstarfamily/fun-in-the-garden" target="_blank">
+          @sacredstarfamily/fun-in-the-garden
         </a>
       </p>
       <textarea
@@ -72,8 +66,8 @@
 
 <script type="text/javascript">
 const sc = new steemconnect.Client({
-  app: 'staging.app',
-  callbackURL: 'https://demo.steemconnect.com'
+  app: 'sacredstarfamily',
+  callbackURL: 'https://sacredstarfamily.com'
 });
 
 window.onload = function() {
@@ -125,7 +119,7 @@ window.onload = function() {
         const self = this;
         this.isLoading = true;
         const permlink = 'steemconnect-' + new Date().getTime();
-        sc.comment('siol', 'test', this.username, permlink, '', this.input, '', function(err, result) {
+        sc.comment('sacredstarfamily', 'fun-in-the-garden', this.username, permlink, '', this.input, '', function(err, result) {
           self.isLoading = false;
           if (result) self.txId = result.result.id;
           if (err) self.error = err;
