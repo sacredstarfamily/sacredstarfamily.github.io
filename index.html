@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta id="viewport" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
   <script src="https://cdn.jsdelivr.net/npm/steemconnect@latest"></script>
-  <script src="https://unpkg.com/dsteem@0.9.0/dist/dsteem.js"></script>
+  <script src="https://unpkg.com/dsteem@latest/dist/dsteem.js"></script>
   <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
   <script src= "app.js"></script>
   
@@ -26,6 +26,23 @@ callbackURL: 'https://sacredstarfamily.com'
 );
 var link = api.getLoginURL(state);
 console.log(link);
+// dsteemstuff
+var dsteem = require('dsteem')
+
+var client = new dsteem.Client('https://api.steemit.com')
+var key = dsteem.PrivateKey.fromLogin('username', 'password', 'posting')
+
+client.broadcast.vote({
+    voter: 'username',
+    author: 'almost-digital',
+    permlink: 'dsteem-is-the-best',
+    weight: 10000
+}, key).then(function(result){
+   console.log('Included in block: ' + result.block_num)
+}, function(error) {
+   console.error(error)
+})
+
 
 </script>
 
