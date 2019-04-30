@@ -27,7 +27,10 @@ angular.module('app', [])
         }
       });
     }
+function showuser() {
+document.getElementById("show").innerHTML(api.me)
 
+};
     $scope.isAuth = function() {
       return !!$scope.user;
     };
