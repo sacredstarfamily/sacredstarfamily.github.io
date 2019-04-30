@@ -31,6 +31,7 @@
   <hr />
   <div>
     <h3>Login & logout</h3>
+    <button onclick=showuser()>show user data<button>
     <b ng-show="isAuth()"><img src="https://steemitimages.com/u/{{user.name}}/avatar" width="32" height="32"> @{{user.name}}</b>
     <button ng-show="isAuth()" class="ml-2 btn btn-secondary" type="submit" ng-click="logout()">
       Logout
