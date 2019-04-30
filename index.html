@@ -23,14 +23,16 @@ steem.api.getAccounts(['calebotamus', 'sacredstarfamily'], function(err, respons
 steem.api.getContent( 'sacredstarfamily', 'fun-in-the-garden', function(err, result) {
   document.getElementById('post').innerHTML(err, result);
 });
-var sc2 = require('steemconnect');
-var api = sc2.Initialize({
+var sc = require('steemconnect');
+var api = sc.Initialize({
 app: 'sacredstarfamily',
 callbackURL: 'https://sacredstarfamily.com'
+accessToken: '',
 }
 );
 var link = api.getLoginURL(state);
 console.log(link);
+
 // dsteemstuff
 var dsteem = require('dsteem')
 
