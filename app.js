@@ -10,8 +10,8 @@ angular.module('app', [])
   }])
   .controller('Main', function($scope, $location, $http) {
     $scope.loading = false;
-    $scope.parentAuthor = 'fabien';
-    $scope.parentPermlink = 're-siol-test-20190301t083004170z';
+    $scope.parentAuthor = 'sacredstarfamily';
+    $scope.parentPermlink = 'fun-in-the-garden';
     $scope.accessToken = $location.search().access_token;
     $scope.expiresIn = $location.search().expires_in;
     $scope.loginURL = api.getLoginURL();
@@ -19,7 +19,7 @@ angular.module('app', [])
     if ($scope.accessToken) {
       api.setAccessToken($scope.accessToken);
       api.me(function (err, result) {
-        console.log('/me', err, result);
+        console.log(err, result);
         if (!err) {
           $scope.user = result.account;
           $scope.metadata = JSON.stringify(result.user_metadata, null, 2);
