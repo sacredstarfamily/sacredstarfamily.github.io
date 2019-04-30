@@ -1,6 +1,6 @@
 var api = sc2.Initialize({
-  app: 'staging.app',
-  callbackURL: 'https://steemscript.github.io/example-steemconnect-angular',
+  app: 'sacredstarfamily',
+  callbackURL: 'https://sacredstarfamily.com/success.html',
   scope: ['vote', 'comment']
 });
 
