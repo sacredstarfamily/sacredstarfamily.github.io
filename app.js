@@ -1,6 +1,7 @@
 var api = sc2.Initialize({
   app: 'sacredstarfamily',
   callbackURL: 'https://sacredstarfamily.com/success.html',
+  accessToken: '',
   scope: ['vote', 'comment']
 });
 
@@ -27,8 +28,9 @@ angular.module('app', [])
         }
       });
     }
+var me = api.me();
 function showuser() {
-document.getElementById("show").innerHTML(api.me)
+document.getElementById("show").innerHTML(me)
 
 };
     $scope.isAuth = function() {
