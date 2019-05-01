@@ -1,4 +1,4 @@
-var api = sc2.Initialize({
+var api = new Client({
   app: 'sacredstarfamily',
   callbackURL: 'https://sacredstarfamily.com/success.html',
   accessToken: '',
