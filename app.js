@@ -1,4 +1,4 @@
-var api = new Client({
+const sc= new steemconnect.Client({
   app: 'sacredstarfamily',
   callbackURL: 'https://sacredstarfamily.com/success.html',
   accessToken: '',
