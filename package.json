@@ -1,0 +1,29 @@
+{
+  "name": "sacredstarfamily",
+  "version": "1.0.0",
+  "description": "living unity play grounds",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sacredstarfamily/sacredstarfamily.github.io.git"
+  },
+  "keywords": [
+    "unity",
+    "love",
+    "play",
+    "fun",
+    "earth"
+  ],
+  "author": "sacredstarfamily",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sacredstarfamily/sacredstarfamily.github.io/issues"
+  },
+  "homepage": "https://github.com/sacredstarfamily/sacredstarfamily.github.io#readme",
+  "dependencies": {
+    "steemconnect": "^2.0.1"
+  }
+}
