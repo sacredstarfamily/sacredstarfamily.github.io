@@ -1,5 +1,5 @@
-var sc2 = require('steemconnect');
-var api = sc2.Initialize({
+
+var api = Initialize({
   app: 'sacredstarfamily',
   callbackURL: 'https://sacredstarfamily.com',
     accessToken: 'access_token',
