@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>sacredstarfamily</title>
-<script src ="/node_modules/steemconnect/lib/index.js"></script>
-<script src ="/node_modules/steemconnect/dist/sc2.min.js"></script>
+  <script src="//cdn.steemjs.com/lib/latest/steemconnect.min.js"></script>
 </head>
 <body>
-  <h1><center>sacredstarfamily</center></h1>
-<button onclick="getlink()">click</button>
-  <p id="glink"></p>
-  <script>
-  var sc = require('steemconnect');
-  var api = new Client.steemconnect({
-  app: 'sacredstarfamily',
-  callbackURL: 'https://sacredstarfamily.com',
-  accessToken: 'access_token',
+<h1><center>sacredstarfamily<br>
+living unity play grounds</center></h1>
+<script>
+  steemconnect.init({
+      app: 'sacredstarfamily',
+      callbackURL: 'https://sacredstarfamily.com'
+    });
+  var isAuth = false;
+  var loginURL = steemconnect.getLoginURL();
 
-  });
-var link= api.getLoginURL(state);
-    console.log(link);
+  steemconnect.isAuthenticated(function(err, result) {
+      if (!err && result.isAuthenticated) {
+        isAuth = true;
+        var username = result.username;
+        //do more
+        console.log("logged in user: " + username);
+      }
+    });
 
-function getlink(){
-  document.getElementById('glink').innerHTML(link);
-};
-  </script>
+    function redirect() {
+      window.location = loginURL;
+    }
+</script>
+
+<a href="#" onClick="redirect()">Log In</a>
+<a href="https://steemconnect.com/logout">Log Out</a>
+
 </body>
 </html>
