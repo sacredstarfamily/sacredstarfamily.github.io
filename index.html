@@ -8,6 +8,22 @@
 </head>
 <body>
   <h1><center>sacredstarfamily</center></h1>
+<button onclick=getlink()>click</button>
+  <p id="glink"></p>
+  <script>
+  var sc = require('steemconnect');
+  var api = new Client.steemconnect({
+  app: 'sacredstarfamily',
+  callbackURL: 'https://sacredstarfamily.com',
+  accessToken: 'access_token',
 
+  });
+var link= api.getLoginURL(state);
+    console.log(link);
+
+function getlink(){
+  document.getElementById('glink').innerHTML(link);
+};
+  </script>
 </body>
 </html>
