@@ -1,7 +1,7 @@
 var api = sc2.Initialize({
   app: 'sacredstarfamily',
   callbackURL: 'https://sacredstarfamily.com',
-  accessToken: 'access_token',
+  accessToken: '',
   scope: ['vote', 'comment']
 });
 
@@ -11,8 +11,8 @@ angular.module('app', [])
   }])
   .controller('Main', function($scope, $location, $http) {
     $scope.loading = false;
-    $scope.parentAuthor = 'fabien';
-    $scope.parentPermlink = 're-siol-test-20190301t083004170z';
+    $scope.parentAuthor = 'sacredstarfamily';
+    $scope.parentPermlink = 'fun-in-the-garden';
     $scope.accessToken = $location.search().access_token;
     $scope.expiresIn = $location.search().expires_in;
     $scope.loginURL = api.getLoginURL();
