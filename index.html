@@ -24,15 +24,15 @@
 <div class="container py-5" style="max-width: 600px;" ng-controller="Main as main">
   <div class="mb-4">
     <h1><center>sacredstarfamily<br><img src="/ssf.png" width='250px'></center></h1>
-    
-    <p>welcome to sacredstarfamily unity play grounds <a href="https://steemit.com/@sacredstarfamily">look at our blog on steemit</a>. You can login, logout, comment and upvote.</p>
-    
+
+    <p>welcome to sacredstarfamily unity play grounds <a href="https://steemit.com/@sacredstarfamily">look at our blog on steemit</a>. You can login with steemconnect</p>
+
   </div>
 
   <hr />
   <div>
     <h3>Login & logout</h3>
-    <b ng-show="isAuth()"><img src="https://steemitimages.com/u/{{user.name}}/avatar" width="32" height="32"> @{{user.name}}</b>
+    <b ng-show="isAuth()"><img src="https://steemitimages.com/u/{{user.name}}/avatar" width="62" height="62"> @{{user.name}}</b>
     <button ng-show="isAuth()" class="ml-2 btn btn-secondary" type="submit" ng-click="logout()">
       Logout
     </button>
@@ -40,7 +40,7 @@
   </div>
 
   <hr />
-  <h3>Comment & vote</h3>
+  <h3>good times at sacrestarfamily: living unity play grounds</h3>
   <div class="input-group input-group-lg">
     Last comments on the post: @{{parentAuthor}}/{{parentPermlink}}
   </div>
