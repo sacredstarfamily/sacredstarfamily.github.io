@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: sacredstarfamily.com 
+Token: b10cc8d48ef67e20cd449bb2fa4db8ca9af69a34b38edc5a1dd558967e6fab77
