@@ -20,7 +20,7 @@ angular.module('app', [])
     if ($scope.accessToken) {
       api.setAccessToken($scope.accessToken);
       api.me(function (err, result) {
-        alert('/me', err, result);
+        console.log('/me', err, result);
         if (!err) {
           $scope.user = result.account;
           $scope.metadata = JSON.stringify(result.user_metadata, null, 2);
@@ -34,7 +34,7 @@ angular.module('app', [])
     };
 
     $scope.loadComments = function() {
-      steem.api.getContentReplies($scope.parentAuthor, $scope.parentPermlink, function(err, result) {
+      steem.api.getContent($scope.parentAuthor, $scope.parentPermlink, function(err, result) {
         if (!err) {
           $scope.comments = result.slice(-5);
           $scope.$apply();
