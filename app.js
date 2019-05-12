@@ -20,7 +20,7 @@ angular.module('app', [])
     if ($scope.accessToken) {
       api.setAccessToken($scope.accessToken);
       api.me(function (err, result) {
-        console.log('/me', err, result);
+        alert('/me', err, result);
         if (!err) {
           $scope.user = result.account;
           $scope.metadata = JSON.stringify(result.user_metadata, null, 2);
