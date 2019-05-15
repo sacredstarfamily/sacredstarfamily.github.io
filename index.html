@@ -67,6 +67,7 @@
   <hr />
   <a href ="https://paypal.me/cbotamus?locale.x=en_US">paypal us donations</a>
   <h3>User metadata</h3>
+  <h4></h4>
   <p>SteemConnect allows you to store data related to each user (such as user preferences) that do not impact a user's core functionality.</p>
   <form ng-show="isAuth()" ng-submit="updateUserMetadata({ locale: locale })">
     <div class="input-group">
@@ -77,7 +78,14 @@
     </div>
     <pre class="mt-4">{{metadata}}</pre>
   </form>
-
+<script>
+    var client = new dsteem.Client('https://api.steemit.com')
+    client.database.getDiscussions('trending', {tag: 'writing', limit: 1}).then(function(discussions){
+        document.body.innerHTML += '<h3>' + discussions[0].title + '</h1>'
+        document.body.innerHTML += '<h4>by ' + discussions[0].author + '</h2>'
+        document.body.innerHTML += '<pre style="white-space: pre-wrap">' + discussions[0].body + '</pre>'
+    })
+</script>
 </div>
 
 </body>
