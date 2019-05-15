@@ -1,8 +1,9 @@
-var api = sc2.Initialize({
+var steemconnect = require('steemconnect');
+
+var api = new steemconnect.Client({
   app: 'sacredstarfamily',
   callbackURL: 'https://sacredstarfamily.com',
-  accessToken: '',
-  scope: ['vote', 'comment']
+  accessToken: ''
 });
 
 angular.module('app', [])
