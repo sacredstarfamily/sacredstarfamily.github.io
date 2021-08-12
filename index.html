@@ -6,87 +6,23 @@
   <meta charset="UTF-8">
   <meta id="viewport" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://at.alicdn.com/t/font_ykgtxz90gjve7b9.css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/steemconnect@latest"></script>
-  <script src="https://unpkg.com/dsteem@^0.8.0/dist/dsteem.js"></script>
-  <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
-  <script src="https://sacredstarfamily.com/app.js"></script>
-  <style>
-    hr { margin: 40px 0; }
-    h3 { margin-bottom: 20px; }
-  </style>
+ 
+ 
 </head>
 
 <body>
 
-<div class="container py-5" style="max-width: 600px;" ng-controller="Main as main">
-  <div class="mb-4">
+
     <h1><center>sacredstarfamily<br><img src="/ssf.png" width='250px'></center></h1>
 
-    <p>welcome to sacredstarfamily unity play grounds <a href="https://steemit.com/@sacredstarfamily">look at our blog on steemit</a>. You can login with steemconnect</p>
-
-  </div>
+  <p>welcome to sacredstarfamily unity play grounds </p>
+  
 
   <hr />
-  <div>
-    <h3>Login & logout</h3>
-    <b ng-show="isAuth()"><img src="https://steemitimages.com/u/{{user.name}}/avatar" width="62" height="62"> @{{user.name}}</b>
-    <button ng-show="isAuth()" class="ml-2 btn btn-secondary" type="submit" ng-click="logout()">
-      Logout
-    </button>
-    <a class="btn btn-primary" ng-href="{{loginURL}}" ng-hide="isAuth()">Log In</a>
-  </div>
-
+ 
   <hr />
   <h3>good times at sacrestarfamily: living unity play grounds</h3>
-  <div class="input-group input-group-lg">
-    Last comments on the post: @{{parentAuthor}}/{{parentPermlink}}
-  </div>
-
-  <ul class="list-group my-4" ng-init="loadComments()">
-    <li class="list-group-item" ng-repeat="comment in comments">
-      @{{comment.author}}: {{comment.body}}
-      <button ng-show="isAuth()" class="ml-2 btn btn-secondary btn-sm" type="submit" ng-click="vote(comment.author, comment.permlink, 1000)">
-        <i class="icon iconfont icon-praise"></i> {{comment.net_votes}}
-      </button>
-    </li>
-  </ul>
-
-  <form ng-show="isAuth()" ng-submit="comment()">
-    <div class="input-group">
-      <input type="text" class="form-control" ng-disabled="loading" placeholder="Write a comment here" ng-model="message">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </span>
-    </div>
-  </form>
-
-  <hr />
-  <a href ="https://paypal.me/cbotamus?locale.x=en_US">paypal us donations</a>
-  <h3>User metadata</h3>
-  <h4></h4>
-  <p>SteemConnect allows you to store data related to each user (such as user preferences) that do not impact a user's core functionality.</p>
-  <form ng-show="isAuth()" ng-submit="updateUserMetadata({ locale: locale })">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="What is your locale?" ng-model="locale">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="submit">Save</button>
-      </span>
-    </div>
-    <pre class="mt-4">{{metadata}}</pre>
-  </form>
-<script>
-    var client = new dsteem.Client('https://api.steemit.com')
-    client.database.getDiscussions('partiko', {tag: 'love', limit: 1}).then(function(discussions){
-        document.body.innerHTML += '<h3>' + discussions[0].title + '</h1>'
-        document.body.innerHTML += '<h4>by ' + discussions[0].author + '</h2>'
-        document.body.innerHTML += '<pre style="white-space: pre-wrap">' + discussions[0].body + '</pre>'
-    })
-</script>
-</div>
+ 
 
 </body>
 </html>
