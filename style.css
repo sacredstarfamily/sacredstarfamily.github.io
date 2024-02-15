@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: azure;
+}
+
+header {
+    background-color: beige;
+    border-bottom: 3px solid brown;
+    margin-bottom: 10px;
+}
+article {
+    background-color: beige;
+    margin:0 auto 20px;
+    padding: 50px;
+    width: 70%;
+    border: 3px solid brown;
+    border-radius: 10px;
+}
+footer {
+    background-color: beige;
+    border-top: 3px solid brown;
+    text-align: center;
+}
+
+nav {
+    list-style-type: none;
+    display: inline;
+}
+.nav-bar, .nav-link {
+    display: inline;
+}
+#brand-title {
+    margin-right: 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+a:hover {
+    color: blue;
+}
+arti
+form {
+    border: 2px solid black;
+    width: 30%;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+.form-label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+input, textarea {
+    padding: 5px;
+    border-radius: 5px;
+}
