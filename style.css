@@ -7,7 +7,11 @@
 body {
     background-color: azure;
 }
-
+img {
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+}
 header {
     background-color: beige;
     border-bottom: 3px solid brown;
