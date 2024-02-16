@@ -7,7 +7,8 @@
 body {
     background-color: azure;
 }
-img {
+#profileImg{
+    width: 60%;
     justify-self: center;
     align-self: center;
     align-items: center;
