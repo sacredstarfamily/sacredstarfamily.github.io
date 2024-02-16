@@ -17,6 +17,8 @@ header {
 }
 article {
     background-color: beige;
+    align-items: center;
+    justify-content: center;
     margin:0 auto 20px;
     padding: 50px;
     width: 70%;
