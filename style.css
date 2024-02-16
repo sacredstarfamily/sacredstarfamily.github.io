@@ -9,9 +9,6 @@ body {
 }
 #profileImg{
     width: 60%;
-    justify-self: center;
-    align-self: center;
-    align-items: center;
 }
 header {
     background-color: beige;
